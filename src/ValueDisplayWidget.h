@@ -1,10 +1,12 @@
 #pragma once
 
-class EvalDisplayWidget : public QWidget {
+#include "EvalValue.h"
+
+class ValueDisplayWidget : public QWidget {
 	public:
-		EvalDisplayWidget(QWidget* parent = nullptr);
+		ValueDisplayWidget(QWidget* parent = nullptr);
 		void setLabelText(const QString& text);
-		void setValue(double val);
+		void setValue(EvalValue val);
 		void clear();
 
 	private:

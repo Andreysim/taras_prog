@@ -1,6 +1,6 @@
 #pragma once
 
-class EvalDisplayWidget;
+class ResultWidget;
 
 class DataInputWidget : public QWidget {
 
@@ -10,23 +10,23 @@ class DataInputWidget : public QWidget {
 		DataInputWidget(QWidget* parent = nullptr);
 
 	public:
+		ResultWidget* resultWidget() const {return m_resultWidget;}
 		QString valueA() const;
 		QString valueB() const;
 		void reset();
 		void clearEvals();
-		void setVal(int targetVal, double val);
-		void setResult(const QString& resultStr);
 
 	signals:
 		void dataInputChanged();
+
+	protected:
+		void paintEvent(QPaintEvent* event) override;
 
 	private:
 		QLabel* m_aLabel;
 		QLabel* m_bLabel;
 		QLineEdit* m_aInput;
 		QLineEdit* m_bInput;
-		EvalDisplayWidget* m_valsWidgets[4];
-		QLabel* m_resultLabel;
-		QLabel* m_resultDisplayLabel;
+		ResultWidget* m_resultWidget;
 
 };

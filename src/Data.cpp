@@ -1,11 +1,14 @@
 #include "pch.h"
 #include "Data.h"
 
-Data::Data() noexcept : Data(0.0, 0.0) {}
+Data::Data() noexcept : Data(0.0, 0.0, 0) {}
 
-Data::Data(double a, double b) noexcept
+Data::Data(double a, double b) noexcept : Data(a, b, 0) {}
+
+Data::Data(double a, double b, qint64 timestamp) noexcept
 		: m_a(a)
-		, m_b(b) {}
+		, m_b(b)
+		, m_timestamp(timestamp) {}
 
 EvalValue Data::v11() const noexcept {
 	return 3 * 20 * m_a;
@@ -50,4 +53,26 @@ bool Data::isFirstColumnGood() const noexcept {
 
 bool Data::isSecondColumnGood() const noexcept {
 	return v12().isGood() && v22().isGood();
+}
+
+QString Data::resultText() const {
+	QString result;
+	if (isGoodData()) {
+		result = "GOOD";
+		if (isFirstColumnGood()) {
+			result += " (first column)";
+		} else {
+			result += " (second column)";
+		}
+	} else {
+		result = "BAD";
+	}
+	return result;
+}
+
+QString Data::resultHtml() const {
+	static const QString pattern = QStringLiteral("<span style=\"color: %1\"><b>%2</b></span>");
+	const QString resultText = this->resultText();
+	const QString color = (isGoodData() ? QStringLiteral("green") : QStringLiteral("red"));
+	return pattern.arg(color, resultText);
 }

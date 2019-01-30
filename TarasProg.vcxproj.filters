@@ -26,9 +26,6 @@
     <ClCompile Include="src\DataInputWidget.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\EvalDisplayWidget.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_DataInputWidget.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -36,6 +33,30 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="src\EvalValue.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StringUtil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HistoryWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ValueDisplayWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResultWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FiltersWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FiltersWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_FiltersWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HistoryWindow.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -49,15 +70,33 @@
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\EvalDisplayWidget.h">
+    <ClInclude Include="src\EvalValue.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\EvalValue.h">
+    <ClInclude Include="src\StringUtil.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HistoryWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ValueDisplayWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ResultWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FilterOptions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HistoryWindow.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\DataInputWidget.h">
+      <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FiltersWidget.h">
       <Filter>src</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -1,47 +1,34 @@
 #include "pch.h"
 #include "DataInputWidget.h"
-#include "EvalDisplayWidget.h"
+#include "ResultWidget.h"
 
 DataInputWidget::DataInputWidget(QWidget* parent)
-		: QWidget             (parent)
-		, m_aLabel            (new QLabel(QStringLiteral("A ="), this))
-		, m_bLabel            (new QLabel(QStringLiteral("B ="), this))
-		, m_aInput            (new QLineEdit(this))
-		, m_bInput            (new QLineEdit(this))
-		, m_resultLabel       (new QLabel(QStringLiteral("Result:"), this))
-		, m_resultDisplayLabel(new QLabel(this)) {
+		: QWidget       (parent)
+		, m_aLabel      (new QLabel(QStringLiteral("A ="), this))
+		, m_bLabel      (new QLabel(QStringLiteral("B ="), this))
+		, m_aInput      (new QLineEdit(this))
+		, m_bInput      (new QLineEdit(this))
+		, m_resultWidget(new ResultWidget(this)) {
 
-	m_valsWidgets[0] = new EvalDisplayWidget(this);
-	m_valsWidgets[1] = new EvalDisplayWidget(this);
-	m_valsWidgets[2] = new EvalDisplayWidget(this);
-	m_valsWidgets[3] = new EvalDisplayWidget(this);
-
-	m_valsWidgets[0]->setLabelText("V11 = 3 * A * 20 =");
-	m_valsWidgets[1]->setLabelText("V12 = 2 * A * 20 =");
-	m_valsWidgets[2]->setLabelText("V21 = 1 * B * 20 =");
-	m_valsWidgets[3]->setLabelText("V22 = 2 * B * 20 =");
+	const QFontMetrics fm(font());
+	const int inpWidth = fm.width("00000000");
+	m_aInput->setFixedWidth(inpWidth);
+	m_bInput->setFixedWidth(inpWidth);
 
 	QGridLayout* inpLout = new QGridLayout;
+	inpLout->setAlignment(Qt::AlignTop);
 	inpLout->addWidget(m_aLabel, 0, 0);
 	inpLout->addWidget(m_aInput, 0, 1);
 	inpLout->addWidget(m_bLabel, 1, 0);
 	inpLout->addWidget(m_bInput, 1, 1);
 
-	QGridLayout* evalLout = new QGridLayout;
-	evalLout->addWidget(m_valsWidgets[0], 0, 0);
-	evalLout->addWidget(m_valsWidgets[1], 0, 1);
-	evalLout->addWidget(m_valsWidgets[2], 1, 0);
-	evalLout->addWidget(m_valsWidgets[3], 1, 1);
+	QWidget* w = new QWidget(this);
+	w->setLayout(inpLout);
 
-	QHBoxLayout* resLout = new QHBoxLayout;
-	resLout->setAlignment(Qt::AlignVCenter);
-	resLout->addWidget(m_resultLabel);
-	resLout->addWidget(m_resultDisplayLabel);
-
-	QGridLayout* lout = new QGridLayout;
-	lout->addLayout(inpLout, 0, 0);
-	lout->addLayout(evalLout, 0, 1);
-	lout->addLayout(resLout, 1, 1, Qt::AlignLeft);
+	QHBoxLayout* lout = new QHBoxLayout;
+	lout->setSpacing(20);
+	lout->addWidget(w);
+	lout->addWidget(m_resultWidget);
 
 	setLayout(lout);
 
@@ -64,17 +51,9 @@ void DataInputWidget::reset() {
 }
 
 void DataInputWidget::clearEvals() {
-	m_valsWidgets[0]->clear();
-	m_valsWidgets[1]->clear();
-	m_valsWidgets[2]->clear();
-	m_valsWidgets[3]->clear();
-	m_resultDisplayLabel->clear();
+	m_resultWidget->clear();
 }
 
-void DataInputWidget::setVal(int targetVal, double val) {
-	m_valsWidgets[targetVal]->setValue(val);
-}
-
-void DataInputWidget::setResult(const QString& resultStr) {
-	m_resultDisplayLabel->setText(resultStr);
+void DataInputWidget::paintEvent(QPaintEvent* event) {
+	//QPainter p(this);
 }
