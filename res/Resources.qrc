@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>bad.png</file>
+        <file>neutral.png</file>
+        <file>ok.png</file>
+    </qresource>
+</RCC>

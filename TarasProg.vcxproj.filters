@@ -9,6 +9,9 @@
       <Extensions>moc;h;cpp</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{c56bc668-9c50-4642-86c3-59b42e02c3b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Data.cpp">
@@ -59,12 +62,21 @@
     <ClCompile Include="src\HistoryWindow.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_Resources.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Emoticon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Data.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\MainWindow.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
@@ -91,6 +103,9 @@
     <ClInclude Include="src\HistoryWindow.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Emoticon.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\DataInputWidget.h">
@@ -98,6 +113,12 @@
     </CustomBuild>
     <CustomBuild Include="src\FiltersWidget.h">
       <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\MainWindow.h">
+      <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Resources.qrc">
+      <Filter>Resources</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

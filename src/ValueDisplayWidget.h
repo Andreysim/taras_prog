@@ -2,6 +2,8 @@
 
 #include "EvalValue.h"
 
+class Emoticon;
+
 class ValueDisplayWidget : public QWidget {
 	public:
 		ValueDisplayWidget(QWidget* parent = nullptr);
@@ -9,8 +11,11 @@ class ValueDisplayWidget : public QWidget {
 		void setValue(EvalValue val);
 		void clear();
 
+	protected:
+		void paintEvent(QPaintEvent* event) override;
+
 	private:
 		QLabel* m_label;
 		QLabel* m_valueLabel;
-		QLabel* m_smileLabel;
+		Emoticon* m_emoticonWidget;
 };

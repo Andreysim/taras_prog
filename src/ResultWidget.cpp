@@ -62,4 +62,21 @@ void ResultWidget::paintEvent(QPaintEvent* event) {
 	p.drawRect(m_valsWidgets[2]->geometry());
 	p.drawRect(m_valsWidgets[3]->geometry());
 	p.drawRect(m_result->geometry());
+
+	const int y1 = m_valsWidgets[0]->geometry().y();
+	const int y2 = m_valsWidgets[2]->geometry().bottom();
+
+	QHBoxLayout* v1xLayout = (QHBoxLayout*) m_valsWidgets[0]->layout();
+	int x =
+		m_valsWidgets[0]->geometry().x()
+		+ v1xLayout->itemAt(2)->geometry().x()
+		- v1xLayout->spacing() / 2;
+	p.drawLine(x, y1, x, y2);
+
+	v1xLayout = (QHBoxLayout*) m_valsWidgets[1]->layout();
+	x =
+		m_valsWidgets[1]->geometry().x()
+		+ v1xLayout->itemAt(2)->geometry().x()
+		- v1xLayout->spacing() / 2;
+	p.drawLine(x, y1, x, y2);
 }

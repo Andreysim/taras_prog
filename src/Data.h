@@ -10,7 +10,7 @@ class Data {
 
 	public:
 		double a() const noexcept { return m_a; }
-		double b() const noexcept { return m_a; }
+		double b() const noexcept { return m_b; }
 		qint64 timestamp() const noexcept { return m_timestamp; }
 		EvalValue v11() const noexcept;
 		EvalValue v12() const noexcept;

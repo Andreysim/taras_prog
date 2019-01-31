@@ -52,10 +52,15 @@ MainWindow::MainWindow()
 
 void MainWindow::loadHistory() {
 	QFile file("history.data");
+	if (!file.exists()) {
+		return;
+	}
+
 	if (!file.open(QIODevice::ReadOnly)) {
 		QMessageBox::critical(this, "Error", "Failed to open history file for read");
 		return;
 	}
+
 	bool isFileCorrupted = false;
 	const QString content = file.readAll();
 	for (const QStringRef& line : content.splitRef('\n', QString::SkipEmptyParts)) {
@@ -139,6 +144,7 @@ void MainWindow::onSaveBtnClick() {
 
 		if (ss.status() == QTextStream::Status::Ok) {
 			m_history.append({data.a(), data.b(), timestamp});
+			emit historyDataAppended(m_history.last());
 			m_saveStatusLabel->setText("<span style=\"color: green\">Saved</span>");
 		} else {
 			m_saveStatusLabel->setText("<span style=\"color: red\">Faild</span>");

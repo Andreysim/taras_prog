@@ -6,8 +6,14 @@ class DataInputWidget;
 class HistoryWindow;
 
 class MainWindow : public QMainWindow {
+
+	Q_OBJECT
+
 	public:
 		MainWindow();
+
+	signals:
+		void historyDataAppended(const Data& data);
 
 	private:
 		void loadHistory();
