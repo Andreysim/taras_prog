@@ -1,3 +1,7 @@
+:: What components you need to install:
+:: - Qt/Qt x.x.x/MinGW y.y.y
+:: - Qt/Tools/MinGW y.y.y
+
 @echo OFF
 
 setlocal
@@ -64,7 +68,9 @@ for %%G in ( %* ) do (
 goto:eof
 
 :error
+pause
 exit /B 1
 
 :eof
+pause
 exit /B 0
