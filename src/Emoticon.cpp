@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Emoticon.h"
 
-Emoticon::Emoticon(QWidget * parent)
+Emoticon::Emoticon(QWidget* parent)
 		: QWidget(parent) {
 	const QFontMetrics fm(font());
 	const int sz = fm.height() * 2;
@@ -25,7 +25,7 @@ void Emoticon::clear() {
 	update();
 }
 
-void Emoticon::paintEvent(QPaintEvent * event) {
+void Emoticon::paintEvent(QPaintEvent* /*event*/) {
 	if (!m_icon.isNull()) {
 		QPainter p(this);
 		p.fillRect(rect(), Qt::transparent);

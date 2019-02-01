@@ -53,7 +53,3 @@ void DataInputWidget::reset() {
 void DataInputWidget::clearEvals() {
 	m_resultWidget->clear();
 }
-
-void DataInputWidget::paintEvent(QPaintEvent* event) {
-	//QPainter p(this);
-}

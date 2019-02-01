@@ -54,7 +54,7 @@ void ResultWidget::clear() {
 	m_result->setText(resultPattern.arg(QString()));
 }
 
-void ResultWidget::paintEvent(QPaintEvent* event) {
+void ResultWidget::paintEvent(QPaintEvent* /*event*/) {
 	QPainter p(this);
 
 	p.drawRect(m_valsWidgets[0]->geometry());

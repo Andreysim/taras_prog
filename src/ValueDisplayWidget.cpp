@@ -34,10 +34,3 @@ void ValueDisplayWidget::clear() {
 	m_valueLabel->clear();
 	m_emoticonWidget->clear();
 }
-
-void ValueDisplayWidget::paintEvent(QPaintEvent * event) {
-	//QPainter p(this);
-	//p.drawRect(m_label->geometry());
-	//p.drawRect(m_valueLabel->geometry());
-	//p.drawRect(m_emoticonWidget->geometry());
-}

@@ -11,9 +11,6 @@ class ValueDisplayWidget : public QWidget {
 		void setValue(EvalValue val);
 		void clear();
 
-	protected:
-		void paintEvent(QPaintEvent* event) override;
-
 	private:
 		QLabel* m_label;
 		QLabel* m_valueLabel;

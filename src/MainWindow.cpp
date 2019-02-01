@@ -66,7 +66,6 @@ void MainWindow::loadHistory() {
 	for (const QStringRef& line : content.splitRef('\n', QString::SkipEmptyParts)) {
 		const QVector<QStringRef> vals = line.split(' ', QString::SkipEmptyParts);
 		if (vals.size() == 3) {
-			bool ok = true;
 			double a;
 			double b;
 			qint64 timestamp;
@@ -158,7 +157,7 @@ void MainWindow::onResetBtnClick() {
 	m_saveStatusLabel->clear();
 }
 
-void MainWindow::onHistoryDialogDestroyed(QObject * dialog) {
+void MainWindow::onHistoryDialogDestroyed(QObject* dialog) {
 	for (int i = 0; i < m_historyDialogs.size(); ++i) {
 		if (m_historyDialogs[i] == dialog) {
 			m_historyDialogs.remove(i);

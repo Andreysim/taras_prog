@@ -19,9 +19,6 @@ class DataInputWidget : public QWidget {
 	signals:
 		void dataInputChanged();
 
-	protected:
-		void paintEvent(QPaintEvent* event) override;
-
 	private:
 		QLabel* m_aLabel;
 		QLabel* m_bLabel;
