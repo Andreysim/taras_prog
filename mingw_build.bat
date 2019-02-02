@@ -1,7 +1,3 @@
-:: What components you need to install:
-:: - Qt/Qt x.x.x/MinGW y.y.y
-:: - Qt/Tools/MinGW y.y.y
-
 @echo OFF
 
 setlocal
@@ -23,7 +19,7 @@ if exist "%INSTALL_DIR%" (
 call :check_for_commands qmake mingw32-make
 
 if %errorlevel% neq 0 (
-	goto:error
+	goto error_exit
 )
 
 if exist Makefile (
@@ -35,7 +31,7 @@ qmake TarasProg.pro -spec win32-g++
 
 if %errorlevel% neq 0 (
 	echo Failed to qmake project
-	goto:error
+	goto error_exit
 )
 
 :: Compile and link
@@ -43,34 +39,39 @@ mingw32-make
 
 if %errorlevel% neq 0 (
 	echo Failed to build program
-	goto:error
+	goto error_exit
 )
 
 :: Install prog and all needed files
-mkdir "%INSTALL_DIR%" && copy bin\taras_program.exe "%INSTALL_DIR%" && windeployqt --no-translations --release "%INSTALL_DIR%\taras_program.exe"
+mkdir "%INSTALL_DIR%" ^
+	&& copy bin\taras_program.exe "%INSTALL_DIR%" ^
+	&& windeployqt --no-translations --release "%INSTALL_DIR%\taras_program.exe"
 
 if %errorlevel% neq 0 (
 	echo Failed to deploy program
-	goto:error
+	goto error_exit
 )
 
-goto:eof
+echo:
+echo Finished
+echo:
+
+:exit
+pause
+exit /B 0
+
+:error_exit
+pause
+exit /B 1
+
+::----------------------------------------------
 
 :check_for_commands
 for %%G in ( %* ) do (
 	where /Q %%G
 	if !errorlevel! neq 0 (
 		echo %%G command not found
-		goto:error
+		exit /B 1
 	)
 )
-
-goto:eof
-
-:error
-pause
-exit /B 1
-
-:eof
-pause
 exit /B 0

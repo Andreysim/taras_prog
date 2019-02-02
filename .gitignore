@@ -4,6 +4,9 @@
 GeneratedFiles/
 *.data
 *.7z
+*.qmake.stash
+Makefile
+object_script.*
 
 # User-specific files
 *.suo
